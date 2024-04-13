@@ -1,16 +1,12 @@
 # Emotion-Music-Recommendation
-Recommending music based on your facial expressions using FER 2013 dataset and Sporify api
-
-
-(Forgive the image quality and my expressions 😆)
+Recommending music based on User facial expressions using FER 2013 dataset 
 
 # Project Description:
-The emotion recognition model is trained on FER 2013 dataset. It can detect 7 emotions. The project works by getting live video feed from web cam, pass it through the model to get a prediction of emotion. Then according to the emotion predicted, the app will fetch playlist of songs from Spotify through spotipy wrapper and recommend the songs by displaying them on the screen.
+The emotion recognition model is trained on FER 2013 dataset. It can detect 7 emotions. The project works by getting live video feed from web camera, pass it through the model to get a prediction of emotion. Then according to the emotion predicted, the app will fetch playlist of songs from Spotify through spotipy wrapper and recommend the songs by displaying them on the screen.
 
 # Features:
 - Real time expression detection and song recommendations.
 - Playlists fetched from Spotify using API.
-- Neumorphism UI for website.
 
 # Running the app:
 Flask: 
@@ -21,9 +17,8 @@ Flask:
 # Tech Stack:
 - Keras
 - Tensorflow
-- Spotipy
-- Tkinter (For testing)
 - Flask
+- Spotipy
 
 # Dataset:
 The dataset used for this project is the famous FER2013 dataset. Models trained on this dataset can classify 7 emotions. The dataset can be found <a href = "https://www.kaggle.com/msambare/fer2013">here</a>.
@@ -38,14 +33,10 @@ Note that the dataset is highly imbalanced with happy class having maxiumum repr
 4. Final Dense layer has 'softmax' activation for classifying 7 emotions
 - Used 'categorical_crossentropy' for loss with 'Adam' optimizer with 'accuracy' metric
 
-Note:- Tried Implementing various other models like VGG16 but accuracy was far too low. This model architecture gives good enough accuracy. A bit more tinkering with hyper parameters might lead to a better accuracy
 
 # Image Processing and Training:
 - The images were normalised, resized to (48,48) and converted to grayscale in batches of 64 with help of 'ImageDataGenerator' in Keras API.
-- Training took around 13 hours locally for 75 epochs with an accuracy of ~66 %
-
-# Current condition:
-The entire project works perfectly fine. Live detection gives good frame rates due to multithreading.
+- Training took around 13 hours locally for 75 epochs with an accuracy of ~67 %
 
 # Project Components:
 - Spotipy is a module for establishing connection to and getting tracks from Spotify using Spotipy wrapper.
