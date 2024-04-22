@@ -19,57 +19,60 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
     crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+
 </head>
 
 <body style = "
-  background: #b3ffb3">
+  background: #1c2129">
+  <!-- 
+  17191E -->
 
   <div id="body">
 
     <div>
 
-      <h1 align="center" style="color: #ff3300;
-	  margin: 40px;">
-        Emotion Music Recommender
-      </h1>
+      <h1 align="center" class="Text" style="color: #76ABAE; margin: 40px;">Emotion Music Recommender </h1>
 
     </div>
 
     <div style="
         width: 50%;
         float: left;
-        height: 100%%;
+        height: 100%;
       
         margin: auto;
         padding-bottom:25px;
         text-align: center;
       ">
 
-    <h2 align="center" style="color: #ff3300;">Emotion Detector
-    </h2>
-
-    <div style="
-        margin: 10px;
-        text-align: center;
-        width: 49%%;
-      "> 
+      <h2 align="center" class="Text" style="color: #76ABAE;">Emotion Detector</h2>
+ 
+      <div style="
+          margin: 10px;
+          text-align: center;
+          width: 100%;
+        "> 
+      
+          <img class ="outer-shadow" id="bg" class="center img-fluid" src="{{ url_for('video_feed') }}" />
     
-      <img class ="outer-shadow" id="bg" class="center img-fluid" src="{{ url_for('video_feed') }}" />
-  
-    </div>
+      </div>
 
     </div>
     
     <div style="
         width: 50%;
         float: left;
-        height: 100%%;
         margin: auto;
         text-align: center;
+        height: 100%%;
+
       ">
 
-        <h2 align="center" style="color: #ff3300;">Song Recommendations
-        </h2>
+        <h2 align="center" class="Text" style="color: #76ABAE;">Song Recommendations</h2>
       
      </div>
 
@@ -77,10 +80,9 @@
         padding: 15px;
         width: 49%;
         float: left;
-        height: 100%%;
-        margin: auto;
         text-align: center;
-        margin-bottom:15px;
+        
+        height: 100%%;
       ">
     </div>
 
@@ -104,13 +106,14 @@
       //Clear result div
       $("#ResultArea").html("");
       //Crate table html tag
-      var table = $("<table class = 'table table-striped table-light table-bordered table-hover table-sm table-responsive' id=DynamicTable></table>").appendTo("#ResultArea");
+      var table = $("<table class = 'table table-striped .table-dark table-bordered table-hover table-sm table-responsive' id=DynamicTable></table>").appendTo("#ResultArea");
       //Create table header row
       var rowHeader = 
       $("<tr></tr>").appendTo(table);
       $("<td></td>").text("Name").appendTo(rowHeader);
       $("<td></td").text("Album").appendTo(rowHeader);
-      $("<td></td>").text("Artist").appendTo(rowHeader)
+      $("<td></td>").text("Song link").appendTo(rowHeader);
+
       //Get JSON data by calling action method in controller
       $.each(data, function (i, value) {
 
@@ -119,10 +122,11 @@
           $("<tr></tr>").appendTo(table);
           $("<td></td>").text(value.Name).appendTo(row);
           $("<td></td>").text(value.Album).appendTo(row);
-          $("<td></td>").text(value.Artist).appendTo(row);
+          // $("<td></td>").text(value.Link).appendTo(row);
+          var linkCell = $("<td></td>").appendTo(row);
+          $("<a href='" + value.Link + "' 00 target='_blank'>Link</a>").appendTo(linkCell);      
       });
     }
-
   </script>
 
 </html>
