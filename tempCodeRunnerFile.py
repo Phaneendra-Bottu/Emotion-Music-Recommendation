@@ -1,1 +1,1 @@
-music_rec
+camera
