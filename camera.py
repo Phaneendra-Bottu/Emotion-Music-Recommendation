@@ -75,7 +75,7 @@ class FPS:
 ''' Class for using another thread for video streaming to boost performance '''
 class WebcamVideoStream:
     	
-		def __init__(self, src=1): #src = 0 for integrated Camera
+		def __init__(self, src=0): #src = 0 for integrated Camera
 			self.stream = cv2.VideoCapture(src,cv2.CAP_DSHOW)
 			(self.grabbed, self.frame) = self.stream.read()
 			self.stopped = False
@@ -107,7 +107,7 @@ class VideoCamera(object):
 	def get_frame(self):
 		global cap1
 		global df1
-		cap1 = WebcamVideoStream(src=1).start() #src = 0 for integrated Camera
+		cap1 = WebcamVideoStream(src=0).start() #src = 0 for integrated Camera
 		image = cap1.read()
 		image=cv2.resize(image,(600,500))
 		gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
